@@ -1,0 +1,21 @@
+# Copy this file to terraform.tfvars and fill in your values.
+# Never commit terraform.tfvars — it contains real credentials.
+
+project     = "llmaven"
+environment = "prod"
+location    = "westus2"
+
+# Your Azure AD tenant ID
+tenant_id = "<your-tenant-id>"
+
+# Object ID of the user/service principal running terraform (gets Key Vault admin)
+current_user_object_id = "<your-object-id>"
+
+# Existing ADLS Gen2 storage account where LiteLLM logs land
+existing_storage_account_name = "your-storage-account-name"
+existing_storage_account_rg   = "your-resource-group"
+adls_container_name           = "litellm-logs"
+
+# App Service SKU — B2 is fine for a small team dashboard
+app_service_sku     = "B2"
+streamlit_image_tag = "latest"

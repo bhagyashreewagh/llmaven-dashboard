@@ -1,0 +1,12 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "<connection-string-for-llmavenissprodwestst>",
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "AZURE_STORAGE_CONNECTION_STRING": "<connection-string-for-llmavenissprodwestst>",
+    "ADLS_CONTAINER": "llmaven",
+    "RAW_PREFIX": "raw",
+    "PROCESSED_PREFIX": "processed",
+    "CHECKPOINT_PATH": "checkpoints/watermark.json"
+  }
+}
