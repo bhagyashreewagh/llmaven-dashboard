@@ -12,8 +12,8 @@ pipeline/local.settings.json
 
 # ── Slides build artifacts ─────────────────────────────────────────────────
 slides/node_modules/
-slides/*.pdf
-slides/*.jpg
+slides/slide-*.pdf
+slides/slide-*.jpg
 slides/package-lock.json
 
 # ── Python ──────────────────────────────────────────────────────────────────
