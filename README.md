@@ -140,20 +140,46 @@ This returns a JSON object mapping `user_001 -> real@email.com` for all known us
 cd dashboard
 pip install -r requirements.txt
 
-# Set env var (or create .env)
+# Set env vars (or create a .env file in dashboard/)
 export AZURE_STORAGE_CONNECTION_STRING="DefaultEndpointsProtocol=https;..."
 export ADLS_CONTAINER="litellm-logs"
+export ANTHROPIC_API_KEY="sk-ant-..."   # needed for Ask the Data tab
 
 streamlit run app.py
 ```
 
 Without `AZURE_STORAGE_CONNECTION_STRING` set, the dashboard falls back to demo data automatically.
 
+Without `ANTHROPIC_API_KEY` set, the first five tabs work normally — only the **Ask the Data** tab is disabled.
+
+### Enabling Ask the Data on the deployed dashboard
+
+The **Ask the Data** tab requires an Anthropic API key. Use a **team or project key** — not a personal one — so queries are billed to the right account.
+
+```bash
+az webapp config appsettings set \
+  --name llmaven-prod-streamlit \
+  --resource-group llmaven-prod-rg \
+  --settings ANTHROPIC_API_KEY="sk-ant-..."
+```
+
+No rebuild or restart needed — App Service picks up new settings within ~30 seconds.
+
+To verify it's set (shows the name only, never the value):
+```bash
+az webapp config appsettings list \
+  --name llmaven-prod-streamlit \
+  --resource-group llmaven-prod-rg \
+  --query "[?name=='ANTHROPIC_API_KEY'].name" -o tsv
+```
+
+---
+
 ### Building and pushing the Docker image
 
 ```bash
-# Build
-docker build -t llmaven-dashboard ./dashboard
+# Build (--platform linux/amd64 required — Azure App Service runs AMD64, not ARM)
+docker build --platform linux/amd64 -t llmaven-dashboard ./dashboard
 
 # Tag and push to ACR
 az acr login --name llmavenprodacr141w
