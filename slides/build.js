@@ -64,7 +64,7 @@ async function build() {
     }
 
     // Eyebrow label
-    sl.addText("University of Washington", {
+    sl.addText("eScience Institute, University of Washington", {
       x: 0.6, y: 1.05, w: 8.5, h: 0.35,
       fontFace: FONT_BODY, fontSize: 11, color: "94A3B8",
       bold: false, align: "left", margin: 0
@@ -118,7 +118,7 @@ async function build() {
     // Three problem cards
     const problems = [
       { icon: FaDatabase, label: "Raw data, no structure",
-        desc: "Thousands of individual JSON files — no sessions, no easy querying, no aggregation." },
+        desc: "Thousands of individual JSON files with no sessions, no easy querying, no aggregation." },
       { icon: FaUserSecret, label: "Privacy risk",
         desc: "Real user identities appear in raw logs. No anonymization before storage or analysis." },
       { icon: FaChartBar, label: "No visibility",
@@ -297,7 +297,7 @@ async function build() {
     // Bottom annotations
     const notes = [
       { x: 0.5,  text: "Logs every API call\nas one .json file" },
-      { x: 3.55, text: "4,900+ files · 1.3 GB\nMay to present" },
+      { x: 3.55, text: "4,900+ files · 1.3 GB\nMay 2026 onwards" },
       { x: 6.6,  text: "Live at azurewebsites.net\nAnonymized · No PII" },
     ];
     for (const n of notes) {
@@ -490,7 +490,7 @@ async function build() {
 
     const nexts = [
       { icon: FaDatabase,    color: C.teal, title: "Historical data ingestion",
-        body: "Full 80-90 day data dump incoming; dashboard will show the complete picture" },
+        body: "Full historical data (80-90 days) being loaded; dashboard will show the complete picture" },
       { icon: FaBrain,       color: C.blue, title: "Fine-tuning dataset generation",
         body: "Export anonymized session data in training format for model fine-tuning" },
       { icon: FaTools,       color: C.teal, title: "Tool and MCP usage evaluation",
