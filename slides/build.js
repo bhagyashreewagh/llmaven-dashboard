@@ -490,7 +490,7 @@ async function build() {
 
     const nexts = [
       { icon: FaDatabase,    color: C.teal, title: "Historical data ingestion",
-        body: "Full historical data (80-90 days) being loaded; dashboard will show the complete picture" },
+        body: "Full historical data (8-day dump) being loaded; dashboard will show the complete picture" },
       { icon: FaBrain,       color: C.blue, title: "Fine-tuning dataset generation",
         body: "Export anonymized session data in training format for model fine-tuning" },
       { icon: FaTools,       color: C.teal, title: "Tool and MCP usage evaluation",
