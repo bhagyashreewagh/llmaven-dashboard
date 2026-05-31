@@ -1,23 +1,22 @@
 """
-LLM Spend Intelligence Dashboard
-University of Washington, eScience Institute, Jan-Mar 2026
+LLMoxie Spend Intelligence Dashboard
+University of Washington
 
 Entry point - keeps only page config, CSS injection, sidebar, and tab routing.
 All logic lives in the modules listed below.
 
 Module map
 ----------
-config.py           - color palette, Plotly defaults, ZIP_PATH
+config.py           - color palette, Plotly defaults
 styles.py           - global CSS + SVG illustrations
 utils.py            - formatters, HTML helpers, _style()
-data.py             - load_data() (cached), _clean_model(), _cache_savings()
+data.py             - load_data() (cached), _clean_model()
 tabs/overview.py    - Tab 1
 tabs/cost_explorer.py   - Tab 2
 tabs/time_intelligence.py - Tab 3
 tabs/users.py       - Tab 4
-tabs/cache.py       - Tab 5
-tabs/sessions.py    - Tab 6
-tabs/ask_the_data.py - Tab 7
+tabs/sessions.py    - Tab 5
+tabs/ask_the_data.py - Tab 6
 """
 
 # ---------------------------------------------------------------------------
@@ -39,7 +38,6 @@ import tabs.overview          as tab_overview
 import tabs.cost_explorer     as tab_cost
 import tabs.time_intelligence as tab_time
 import tabs.users             as tab_users
-import tabs.cache             as tab_cache
 import tabs.sessions          as tab_sessions
 import tabs.ask_the_data      as tab_ask
 
@@ -70,10 +68,10 @@ with st.sidebar:
     st.markdown("""
     <div style='padding:.6rem 0 .3rem'>
       <div style='font-size:1.4rem;font-weight:800;color:white;letter-spacing:-0.02em'>
-        LLM Spend
+        LLMoxie
       </div>
       <div style='font-size:0.75rem;color:rgba(255,255,255,0.5);margin-top:0.1rem;font-weight:500'>
-        Intelligence Dashboard
+        Spend Intelligence Dashboard
       </div>
     </div>
     """, unsafe_allow_html=True)
@@ -148,10 +146,10 @@ with hc1:
     st.markdown(f"""
     <div style='margin-bottom:0.5rem'>
       <div style='font-size:1.85rem;font-weight:800;color:{C["text"]};letter-spacing:-0.02em'>
-        LLM Spend Intelligence
+        LLMoxie Spend Intelligence
       </div>
       <div style='color:{C["muted"]};font-size:0.88rem;margin-top:0.15rem;font-weight:500'>
-        University of Washington, eScience Institute &nbsp;|&nbsp; {sub_note}
+        University of Washington &nbsp;|&nbsp; {sub_note}
       </div>
     </div>
     """, unsafe_allow_html=True)
@@ -169,12 +167,11 @@ st.markdown('<div class="div"></div>', unsafe_allow_html=True)
 # ---------------------------------------------------------------------------
 # Tabs
 # ---------------------------------------------------------------------------
-t1, t2, t3, t4, t5, t6, t7 = st.tabs([
+t1, t2, t3, t4, t5, t6 = st.tabs([
     "Overview",
     "Cost Explorer",
     "Time Intelligence",
     "Users",
-    "Cache",
     "Sessions",
     "Ask the Data",
 ])
@@ -183,6 +180,5 @@ with t1: tab_overview.render(df)
 with t2: tab_cost.render(df)
 with t3: tab_time.render(df)
 with t4: tab_users.render(df)
-with t5: tab_cache.render(df)
-with t6: tab_sessions.render(df)
-with t7: tab_ask.render(df)
+with t5: tab_sessions.render(df)
+with t6: tab_ask.render(df)

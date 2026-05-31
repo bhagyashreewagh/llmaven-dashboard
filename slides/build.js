@@ -38,7 +38,7 @@ const FONT_BODY  = "Calibri";
 async function build() {
   const pres = new pptxgen();
   pres.layout = "LAYOUT_16x9"; // 10" × 5.625"
-  pres.title  = "LLMaven Analytics Pipeline";
+  pres.title  = "LLMoxie Analytics Pipeline";
   pres.author = "Bhagyashree Wagh";
 
   // ── Slide 1: Title ────────────────────────────────────────────────────────
@@ -64,14 +64,14 @@ async function build() {
     }
 
     // Eyebrow label
-    sl.addText("ISS / eScience Institute · University of Washington", {
+    sl.addText("University of Washington", {
       x: 0.6, y: 1.05, w: 8.5, h: 0.35,
       fontFace: FONT_BODY, fontSize: 11, color: "94A3B8",
       bold: false, align: "left", margin: 0
     });
 
     // Main title
-    sl.addText("LLMaven Analytics\nPipeline", {
+    sl.addText("LLMoxie Analytics\nPipeline", {
       x: 0.6, y: 1.55, w: 8.5, h: 1.85,
       fontFace: FONT_TITLE, fontSize: 48, color: C.white,
       bold: true, align: "left", margin: 0
@@ -185,13 +185,13 @@ async function build() {
     const items = [
       { icon: FaLayerGroup, color: C.teal,   bg: "F0FDFA",
         title: "Proper Sessions",
-        body:  "Group individual requests into sessions — see full conversation context, not isolated calls." },
+        body:  "Group individual requests into sessions to see full conversation context, not isolated calls." },
       { icon: FaUserSecret, color: C.blue,   bg: "EFF6FF",
         title: "Anonymized Data",
         body:  "Real identities replaced with consistent anonymous IDs. Reversible internally by admins." },
       { icon: MdQueryStats, color: C.tealDark, bg: "F0FDFA",
         title: "Dashboard + Querying",
-        body:  "Live Streamlit dashboard with cost, usage, latency, and cache analytics across 7 views." },
+        body:  "Live Streamlit dashboard with cost, usage, latency, and session analytics across 6 views." },
       { icon: FaBrain,      color: C.blue,   bg: "EFF6FF",
         title: "Fine-tuning Datasets",
         body:  "Export curated interaction data to generate datasets for model fine-tuning." },
@@ -249,7 +249,7 @@ async function build() {
       fontFace: FONT_TITLE, fontSize: 34, color: C.navy,
       bold: true, align: "left", margin: 0
     });
-    sl.addText("Simple, direct — no ETL jobs, no intermediary databases", {
+    sl.addText("One pipeline, three steps", {
       x: 0.5, y: 0.95, w: 9, h: 0.38,
       fontFace: FONT_BODY, fontSize: 16, color: C.gray,
       align: "left", margin: 0
@@ -296,8 +296,8 @@ async function build() {
 
     // Bottom annotations
     const notes = [
-      { x: 0.5,  text: "Carlos's proxy writes one\n.json per request" },
-      { x: 3.55, text: "4,900+ files · 1.3 GB\nMay–present" },
+      { x: 0.5,  text: "Logs every API call\nas one .json file" },
+      { x: 3.55, text: "4,900+ files · 1.3 GB\nMay to present" },
       { x: 6.6,  text: "Live at azurewebsites.net\nAnonymized · No PII" },
     ];
     for (const n of notes) {
@@ -323,11 +323,11 @@ async function build() {
     // Left column: checklist
     const done = [
       "Live dashboard connected to Azure Data Lake",
-      "Reads all historical data — 4,900+ log files",
-      "7 analytics tabs: Cost, Usage, Time, Users, Cache, Sessions, AI Q&A",
-      "Reversible PII anonymization (user_001, user_002…)",
+      "Reads all historical data (4,900+ log files)",
+      "6 analytics tabs: Overview, Cost, Time, Users, Sessions, AI Q&A",
+      "Reversible PII anonymization (user_001, user_002...)",
       "Reverse mapping stored securely in Azure Key Vault",
-      "Auto-refresh every 5 minutes — always current",
+      "Auto-refresh every 5 minutes, always current",
       "Deployed on Azure App Service with managed identity",
     ];
 
@@ -361,15 +361,15 @@ async function build() {
       fontFace: FONT_BODY, fontSize: 10, color: C.teal,
       bold: true, align: "center", charSpacing: 2, margin: 0
     });
-    sl.addText("In Progress", {
+    sl.addText("Completed", {
       x: 7.1, y: 1.58, w: 2.4, h: 0.5,
-      fontFace: FONT_TITLE, fontSize: 18, color: C.white,
+      fontFace: FONT_TITLE, fontSize: 18, color: C.teal,
       bold: true, align: "center", margin: 0
     });
 
     const stats = [
       { val: "4,900+", lbl: "log files" },
-      { val: "7",      lbl: "dashboard tabs" },
+      { val: "6",      lbl: "dashboard tabs" },
       { val: "0 PII",  lbl: "exposed" },
       { val: "5 min",  lbl: "refresh cycle" },
     ];
@@ -393,39 +393,36 @@ async function build() {
     const sl = pres.addSlide();
     sl.background = { color: C.white };
 
-    sl.addText("The dashboard — 7 views", {
+    sl.addText("The dashboard: 6 views", {
       x: 0.5, y: 0.3, w: 9, h: 0.65,
       fontFace: FONT_TITLE, fontSize: 34, color: C.navy,
       bold: true, align: "left", margin: 0
     });
 
     const tabs = [
-      { name: "Overview",        desc: "Total spend, requests, tokens, error rate — at a glance" },
-      { name: "Cost Explorer",   desc: "Spend by model, team, user — break down the bill" },
-      { name: "Time Intelligence", desc: "Hourly / daily patterns — when are researchers most active?" },
-      { name: "Users",           desc: "Per-user spend and activity (anonymized — user_001, etc.)" },
-      { name: "Cache",           desc: "Cache hit rates and $ saved from prompt caching" },
-      { name: "Sessions",        desc: "Multi-turn conversations grouped by session ID" },
-      { name: "Ask the Data",    desc: "Natural language Q&A powered by Claude" },
+      { name: "Overview",          desc: "Total spend, requests, tokens and error rate at a glance" },
+      { name: "Cost Explorer",     desc: "Spend by model, team and user to break down the bill" },
+      { name: "Time Intelligence", desc: "Hourly and daily patterns showing when researchers are most active" },
+      { name: "Users",             desc: "Per-user spend and activity (anonymized: user_001, user_002, ...)" },
+      { name: "Sessions",          desc: "Multi-turn conversations grouped by session ID" },
+      { name: "Ask the Data",      desc: "Natural language Q&A powered by Claude" },
     ];
 
-    // 4 left, 3 right — right column vertically centered within same range as left
+    // 3 left, 3 right — balanced columns
     const cols = [
-      [0, 1, 2, 3],
-      [4, 5, 6],
+      [0, 1, 2],
+      [3, 4, 5],
     ];
     const colX    = [0.5, 5.3];
-    const rowH    = 0.88;
+    const rowH    = 1.05;
     const startY  = 1.2;
-    // Right column: offset so 3 items are vertically centered in the same 4-row span
-    const rightOffset = rowH * 0.5; // shift down by half a row height
 
     for (let c = 0; c < 2; c++) {
       for (let r = 0; r < cols[c].length; r++) {
         const idx = cols[c][r];
         const { name, desc } = tabs[idx];
         const x = colX[c];
-        const y = startY + r * rowH + (c === 1 ? rightOffset : 0);
+        const y = startY + r * rowH;
 
         // Number badge
         sl.addShape(pres.shapes.RECTANGLE, {
@@ -493,10 +490,10 @@ async function build() {
 
     const nexts = [
       { icon: FaDatabase,    color: C.teal, title: "Historical data ingestion",
-        body: "Carlos uploading full 80-90 day dump → dashboard shows complete picture" },
+        body: "Full 80-90 day data dump incoming; dashboard will show the complete picture" },
       { icon: FaBrain,       color: C.blue, title: "Fine-tuning dataset generation",
         body: "Export anonymized session data in training format for model fine-tuning" },
-      { icon: FaTools,       color: C.teal, title: "Tool & MCP usage evaluation",
+      { icon: FaTools,       color: C.teal, title: "Tool and MCP usage evaluation",
         body: "Analyze which tools, skills, and MCP servers researchers rely on most" },
       { icon: MdQueryStats,  color: C.blue, title: "Programmatic access",
         body: "Query API so teams can pull usage data into notebooks and reports" },
@@ -542,7 +539,7 @@ async function build() {
   }
 
   // ── Write ────────────────────────────────────────────────────────────────
-  const outPath = "/Users/a91885/Desktop/Kyron Medical/llmaven/slides/LLMaven_Pipeline.pptx";
+  const outPath = "/Users/a91885/Desktop/Kyron Medical/llmaven/slides/LLMoxie_Pipeline.pptx";
   await pres.writeFile({ fileName: outPath });
   console.log("✅  Saved:", outPath);
 }
