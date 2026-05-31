@@ -297,7 +297,7 @@ async function build() {
     // Bottom annotations
     const notes = [
       { x: 0.5,  text: "Logs every API call\nas one .json file" },
-      { x: 3.55, text: "4,900+ files · 1.3 GB\nMay 2026 onwards" },
+      { x: 3.55, text: "4,900+ files · 1.3 GB\n8-day dump" },
       { x: 6.6,  text: "Live at azurewebsites.net\nAnonymized · No PII" },
     ];
     for (const n of notes) {
@@ -490,7 +490,7 @@ async function build() {
 
     const nexts = [
       { icon: FaDatabase,    color: C.teal, title: "Historical data ingestion",
-        body: "Full historical data (8-day dump) being loaded; dashboard will show the complete picture" },
+        body: "Full historical data being loaded; dashboard will show the complete picture" },
       { icon: FaBrain,       color: C.blue, title: "Fine-tuning dataset generation",
         body: "Export anonymized session data in training format for model fine-tuning" },
       { icon: FaTools,       color: C.teal, title: "Tool and MCP usage evaluation",
